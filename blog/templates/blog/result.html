@@ -1,0 +1,65 @@
+﻿{% extends "blog/base.html" %}
+
+{% block content %}
+  {% if query_type == 'analyze' %}
+    <h2>Результаты анализа</h2>
+    <p>Измененный текст: {{ rows.0.0 }}</p>
+    <p>Количество замен: {{ length.0.0 }}</p>
+  {% elif query_type == 'request' %}
+    <h2>Результаты запроса</h2>
+    <table class="my-table">
+      <thead>
+        <tr>
+          {% for column in columns %}
+          <th>{{ column }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          {% for value in row %}
+          <td>{{ value }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+   {% elif query_type == 'count_supplier' %}
+    <tr>
+    {% for val in result %}
+      {% for value in val %}
+          <th>Количество поставщиков = {{ value }}</th>
+          {% endfor %}
+      {% endfor %}
+    </tr>
+  {% elif query_type == 'cursor' %}
+    <table class="my-table">
+      <thead>
+        <tr>
+          {% for column in columns %}
+          <th>{{ column }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for val in result %}
+        <tr>
+          {% for value in val %}
+          <td>{{ value }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% elif query_type == 'avg_price' %}
+    <tr>
+    {% for val in result %}
+      {% for value in val %}
+          <th> Cредняя цена книг = {{ value }}</th>
+          {% endfor %}
+      {% endfor %}
+    </tr>
+  {% endif %}
+{% endblock %}
+

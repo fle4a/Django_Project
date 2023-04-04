@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cтилистический анализатор текста</title>
+  </head>
+  <body>
+    <h1>Стилистический анализатор текста</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="query">Введите текст для анализа:</label>
+      <input type="text" name="query" id="query">
+      <br>
+      <input type="submit" value="Отправить">
+    </form>
+  </body>
+</html>
+{% endblock content %}

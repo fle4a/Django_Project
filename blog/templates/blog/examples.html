@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+  <head>
+    <title>Выберите задания</title>
+  </head>
+  <body>
+    <h1>Выберите задание</h1>
+    <form method="post">
+		{% csrf_token %}
+		<input type="submit" name="button1" value="Подсчитать количество поставщиков в таблице Deliveries">
+		<input type="submit" name="button2" value="Создать статический курсор по данным таблицы Books и Publishing_house с полями Code_book, Title_book, Publish">
+		<input type="submit" name="button3" value="Подсчитать среднюю цену закупленных книг (с помощью запроса SELECT) и умножить ее на значение 123,34">
+	</form>
+  </body>
+{% endblock content %}
